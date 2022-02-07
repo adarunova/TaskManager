@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:TaskManager.Views"
+       xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+       Title="TaskManager"
+       x:Class="TaskManager.AppShell">
+
+    <!--
+        The overall app visual hierarchy is defined here, along with navigation.
+    
+        https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/
+    -->
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.NavBarIsVisible" Value="False"/>
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#C5E8FB" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#7DBBDE"/>
+                <Setter Property="Shell.TabBarForegroundColor" Value="#2B4D66"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="#2B4D66"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}"/>
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <TabBar>
+        <ShellContent Title="Profile" Icon="profile.png" ContentTemplate="{DataTemplate local:ProfilePage}" />
+        <ShellContent Title="Your Tasks" Icon="assigned_tasks.png" ContentTemplate="{DataTemplate local:TasksPage}" />
+        <ShellContent Title="Issued Tasks" Icon="issued_tasks.png" ContentTemplate="{DataTemplate local:IssuedTasksPage}" />
+    </TabBar>
+
+    <ShellContent Route="LoginPage" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate local:LoginPage}" />
+
+
+</Shell>

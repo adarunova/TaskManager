@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="TaskManager.Controls.CalendarCarouselView">
+
+    <ContentView.Content>
+        <StackLayout>
+            <CollectionView
+                x:Name="listDates"
+                BackgroundColor="Transparent"
+                HeightRequest="80"
+                ItemsSource="{Binding Dates}"
+                SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="4" Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <pv:PancakeView
+                            Padding="5,0,5,5"
+                            Margin="5"
+                            BackgroundColor="{Binding Color}"
+                            CornerRadius="8"
+                            HasShadow="False"
+                            IsClippedToBounds="True"
+                            WidthRequest="40">
+                            <pv:PancakeView.Shadow>
+                                <pv:DropShadow Color="#000000" Offset="5,5" BlurRadius="3" />
+                            </pv:PancakeView.Shadow>
+                            <Grid
+                                HorizontalOptions="Center"
+                                VerticalOptions="CenterAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    FontFamily="MuliBold"
+                                    FontSize="13"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Day}"
+                                    TextColor="White" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    FontFamily="MuliBold"
+                                    FontSize="10"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding DayOfWeek}"
+                                    TextColor="White" />
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    Margin="0,-5,0,0"
+                                    FontFamily="MuliBold"
+                                    FontSize="10"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Month}"
+                                    TextColor="White" />
+                            </Grid>
+                        </pv:PancakeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

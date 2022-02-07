@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="TaskManager.Views.RegistrationPage">
+
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand">
+
+                <ffSvg:SvgCachedImage
+                    Margin="20,25,20,20"
+                    HorizontalOptions="Start"
+                    Aspect="AspectFit"
+                    Source="back.svg"
+                    HeightRequest="17"
+                    WidthRequest="17">
+                    <ffSvg:SvgCachedImage.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnBack"
+                            NumberOfTapsRequired="1" />
+                    </ffSvg:SvgCachedImage.GestureRecognizers>
+                </ffSvg:SvgCachedImage>
+
+                <ffSvg:SvgCachedImage Source="company_registration.svg" HeightRequest="120"  WidthRequest="120" VerticalOptions="CenterAndExpand"/>
+
+                <pv:PancakeView
+                    BackgroundColor="White"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    CornerRadius="20"
+                    Margin="20"
+                    HasShadow="True">
+                    <pv:PancakeView.Shadow>
+                        <pv:DropShadow Color="#C8CBCB" Offset="5,5" BlurRadius="2"/>
+                    </pv:PancakeView.Shadow>
+                    <StackLayout
+                        Orientation="Vertical"
+                        Padding="15"
+                        Margin="0,10,0,0">
+                        <Label VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                    FontFamily="MuliBlack"
+                                    FontSize="20"
+                                    Text="COMPANY" 
+                                    TextColor="#FF623C"/>
+                                    <Span
+                                    FontFamily="MuliBlack"
+                                    FontSize="20"
+                                    Text=" LOGIN"
+                                    TextColor="#2B4D66" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <pv:PancakeView
+                            BackgroundColor="#E62B4D66"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            CornerRadius="23"
+                            Margin="10,10,10,0"
+                            HasShadow="True">
+
+                            <StackLayout
+                                Orientation="Horizontal">
+
+                                <ffSvg:SvgCachedImage
+                                    Aspect="AspectFit"
+                                    Source="email_registration.svg"
+                                    Margin="15,0,2,0"
+                                    HeightRequest="20"
+                                    WidthRequest="20"/>
+
+                                <Entry
+                                    Placeholder="Email"
+                                    Text="{Binding CompanyEmail}"
+                                    Keyboard="Email"
+                                    FontSize="17"
+                                    FontFamily="RobotoLight"
+                                    HeightRequest="46"
+                                    Margin="0,0,10,0"
+                                    TextColor="White"
+                                    PlaceholderColor="White"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </pv:PancakeView>
+
+                        <pv:PancakeView
+                            BackgroundColor="#E62B4D66"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            CornerRadius="23"
+                            Margin="10,10,10,0"
+                            HasShadow="True">
+
+                            <StackLayout
+                                Orientation="Horizontal">
+
+                                <ffSvg:SvgCachedImage
+                                    Aspect="AspectFit"
+                                    Source="company_login.svg"
+                                    Margin="15,0,2,0"
+                                    HeightRequest="20"
+                                    WidthRequest="20"/>
+
+                                <Entry 
+                                    Placeholder="Comany name"
+                                    PlaceholderColor="White"
+                                    TextColor="White"
+                                    FontSize="17"
+                                    FontFamily="RobotoLight"
+                                    HeightRequest="46"
+                                    Text="{Binding CompanyName}" 
+                                    VerticalTextAlignment="Center"
+                                    HorizontalOptions="FillAndExpand">
+                                </Entry>
+                            </StackLayout>
+                        </pv:PancakeView>
+
+                        <pv:PancakeView
+                            BackgroundColor="#E62B4D66"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            CornerRadius="23"
+                            Margin="10,10,10,10"
+                            HasShadow="True">
+
+                            <StackLayout
+                                Orientation="Horizontal">
+
+                                <ffSvg:SvgCachedImage
+                                    Aspect="AspectFit"
+                                    Source="password_login.svg"
+                                    Margin="15,0,2,0"
+                                    HeightRequest="20"
+                                    WidthRequest="20"/>
+
+                                <Entry
+                                    Placeholder="Password"
+                                    Text="{Binding CompanyPassword}"
+                                    FontSize="17"
+                                    FontFamily="RobotoLight"
+                                    HeightRequest="46"
+                                    Margin="0,0,10,0"
+                                    TextColor="White"
+                                    PlaceholderColor="White"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </pv:PancakeView>
+
+                        <Button 
+                            CornerRadius="10" 
+                            Command="{Binding CreateCompany}" 
+                            Text="Register"
+                            FontSize="16"
+                            BackgroundColor="#FF623C"
+                            FontFamily="MuliRegular"
+                            HorizontalOptions="Center"
+                            WidthRequest="100"
+                            TextColor="White"/>
+                    </StackLayout>
+                </pv:PancakeView>
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

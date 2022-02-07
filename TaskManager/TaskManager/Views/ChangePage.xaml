@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskManager.Views.ChangePage"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:local="clr-namespace:TaskManager.ViewModels" >
+
+    <ContentPage.Content>
+
+        <ScrollView BackgroundColor="White">
+            <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand">
+
+
+                <StackLayout
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Margin="20,30,20,10"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal">
+
+                    <ffSvg:SvgCachedImage
+                    Aspect="AspectFit"
+                    Source="back.svg"
+                    HeightRequest="17"
+                    WidthRequest="17">
+                        <ffSvg:SvgCachedImage.GestureRecognizers>
+                            <TapGestureRecognizer
+                            Tapped="OnBack"
+                            NumberOfTapsRequired="1" />
+                        </ffSvg:SvgCachedImage.GestureRecognizers>
+                    </ffSvg:SvgCachedImage>
+
+                    <Label
+                        x:Name="titleLabel"
+                        VerticalOptions="Center"
+                        Margin="15,0,0,0"
+                        FontFamily="MuliBlack"
+                        FontSize="20"
+                        TextColor="#2B4D66"/>
+                </StackLayout>
+
+                <Grid 
+                    Margin="17,0,17,0"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        x:Name="subtitleLabel"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="8,10,0,5"
+                        TextColor="#1C374A"
+                        VerticalOptions="Center"
+                        FontFamily="MuliBold"
+                        FontSize="20"/>
+
+                    <ffSvg:SvgCachedImage
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Aspect="AspectFit"
+                        Source="description.svg"
+                        Margin="10,10,9,5"
+                        HeightRequest="22"
+                        WidthRequest="22"/>
+
+                    <pv:PancakeView 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="#AAd7e7f2"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        CornerRadius="6"
+                        Margin="10,0,10,10"
+                        Padding="-5">
+                        <Entry
+                            x:Name="entry"
+                            FontFamily="MuliRegular"
+                            HeightRequest="40"
+                            Margin="15,10,10,10"
+                            VerticalOptions="Center"
+                            TextColor="#1C374A"
+                            FontSize="17"/>
+                    </pv:PancakeView>
+                </Grid>
+
+                <Button 
+                    Clicked="OnChange"
+                    CornerRadius="10" 
+                    Text="Change"
+                    FontSize="16"
+                    BackgroundColor="#FF623C"
+                    FontFamily="MuliRegular"
+                    HorizontalOptions="Center"
+                    WidthRequest="100"
+                    TextColor="White"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="TaskManager.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="#F2F9FC">
+            <StackLayout Margin="0,30,0,20" Orientation="Vertical" VerticalOptions="StartAndExpand">
+
+                <ffSvg:SvgCachedImage Source="logotype.svg"  HeightRequest="120"  WidthRequest="120" VerticalOptions="CenterAndExpand"/>
+
+                <pv:PancakeView
+                    BackgroundColor="White"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    CornerRadius="20"
+                    Margin="20,20,20,15"
+                    HasShadow="True">
+                    <pv:PancakeView.Shadow>
+                        <pv:DropShadow Color="#C8CBCB" Offset="5,5" BlurRadius="2"/>
+                    </pv:PancakeView.Shadow>
+                    <StackLayout
+                        Orientation="Vertical"
+                        Padding="15"
+                        Margin="0,10,0,0">
+                        <Label VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                    FontFamily="MuliBlack"
+                                    FontSize="20"
+                                    Text="USER" 
+                                    TextColor="#FF623C"/>
+                                    <Span
+                                    FontFamily="MuliBlack"
+                                    FontSize="20"
+                                    Text=" LOGIN"
+                                    TextColor="#2B4D66" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <pv:PancakeView
+                            BackgroundColor="#E62B4D66"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            CornerRadius="23"
+                            Margin="10,10,10,0"
+                            HasShadow="True">
+
+                            <StackLayout
+                                Orientation="Horizontal">
+
+                                <ffSvg:SvgCachedImage
+                                    Aspect="AspectFit"
+                                    Source="company_login.svg"
+                                    Margin="15,0,2,0"
+                                    HeightRequest="20"
+                                    WidthRequest="20"/>
+
+                                <Label 
+                                    x:Name="companyLabel"
+                                    TextColor="White"
+                                    FontSize="17"
+                                    FontFamily="RobotoLight"
+                                    HeightRequest="46"
+                                    Text="{Binding Company}" 
+                                    VerticalTextAlignment="Center"
+                                    HorizontalOptions="FillAndExpand">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Tapped="OnCompanyLabelTapped"
+                                            NumberOfTapsRequired="1" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                        </pv:PancakeView>
+
+                        <pv:PancakeView
+                            BackgroundColor="#E62B4D66"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            CornerRadius="23"
+                            Margin="10,10,10,0"
+                            HasShadow="True">
+
+                            <StackLayout
+                                Orientation="Horizontal">
+
+                                <ffSvg:SvgCachedImage
+                                    Aspect="AspectFit"
+                                    Source="username_login.svg"
+                                    Margin="15,0,2,0"
+                                    HeightRequest="20"
+                                    WidthRequest="20"/>
+
+                                <Entry 
+                                    Placeholder="Username"
+                                    Text="{Binding Username}"
+                                    FontSize="17"
+                                    FontFamily="RobotoLight"
+                                    HeightRequest="46"
+                                    TextColor="White"
+                                    Margin="0,0,10,0"
+                                    PlaceholderColor="White"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </pv:PancakeView>
+
+                        <pv:PancakeView
+                            BackgroundColor="#E62B4D66"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            CornerRadius="23"
+                            Margin="10,10,10,10"
+                            HasShadow="True">
+
+                            <StackLayout
+                                Orientation="Horizontal">
+
+                                <ffSvg:SvgCachedImage
+                                    Aspect="AspectFit"
+                                    Source="password_login.svg"
+                                    Margin="15,0,2,0"
+                                    HeightRequest="20"
+                                    WidthRequest="20"/>
+
+                                <Entry 
+                                    IsPassword="True"
+                                    Placeholder="Password"
+                                    Text="{Binding Password}"
+                                    FontSize="17"
+                                    FontFamily="RobotoLight"
+                                    HeightRequest="46"
+                                    Margin="0,0,10,0"
+                                    TextColor="White"
+                                    PlaceholderColor="White"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </pv:PancakeView>
+                        
+                        <Button 
+                            CornerRadius="10" 
+                            Command="{Binding LoginUser}" 
+                            Text="Login"
+                            FontSize="16"
+                            BackgroundColor="#FF623C"
+                            FontFamily="MuliRegular"
+                            HorizontalOptions="Center"
+                            WidthRequest="100"
+                            TextColor="White"/>
+                    </StackLayout>
+                </pv:PancakeView>
+
+                <Grid HorizontalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <BoxView
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HeightRequest="1"
+                        WidthRequest="50"
+                        VerticalOptions="Center"
+                        Color="#2B4D66"/>
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="5"
+                        Text="OR"
+                        TextColor="#2B4D66"
+                        FontSize="19"
+                        FontFamily="RobotoRegular"/>
+
+                    <BoxView
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        HeightRequest="1"
+                        WidthRequest="50"
+                        VerticalOptions="Center"
+                        Color="#2B4D66"/>
+                </Grid>
+
+                <Button 
+                    CornerRadius="10" 
+                    Margin="0,15,0,0" 
+                    Command="{Binding LoginCompany}" 
+                    Text="Login for companies" 
+                    TextColor="White" 
+                    FontFamily="MuliRegular"
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    WidthRequest="270"
+                    BackgroundColor="#CCFF623C"/>
+                
+                <Button 
+                    CornerRadius="10" 
+                    Margin="0,10,0,15" 
+                    Command="{Binding RegisterCompany}" 
+                    Text="Register a company" 
+                    TextColor="White"
+                    FontFamily="MuliRegular"
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    WidthRequest="270"
+                    BackgroundColor="#CCFF623C"/>
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+    
+</ContentPage>

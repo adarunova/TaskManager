@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:vm="clr-namespace:TaskManager.ViewModels"
+             x:Class="TaskManager.Views.ProfilePage"
+             NavigationPage.HasNavigationBar="False"
+             Title="{Binding Title}">
+
+    <ContentPage.Content>
+
+        <ScrollView BackgroundColor="#F2F9FC">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="20,25,20,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal">
+
+                    <ffSvg:SvgCachedImage
+                        Aspect="AspectFit"
+                        Source="logotype.svg"
+                        HeightRequest="34"
+                        WidthRequest="34"/>
+
+                    <Label VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    FontFamily="MuliBlack"
+                                    FontSize="20"
+                                    Text="YOUR" 
+                                    TextColor="#FF623C"/>
+                                <Span
+                                    FontFamily="MuliBlack"
+                                    FontSize="20"
+                                    Text=" PROFILE"
+                                    TextColor="#2B4D66" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+
+                <ffSvg:SvgCachedImage
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Aspect="AspectFit"
+                    Margin="0,30,10,0"
+                    Source="company_profile.svg"
+                    HeightRequest="24"
+                    WidthRequest="24">
+                    <ffSvg:SvgCachedImage.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnCompanyProfileTapped"
+                            NumberOfTapsRequired="1" />
+                    </ffSvg:SvgCachedImage.GestureRecognizers>
+                </ffSvg:SvgCachedImage>
+
+                <ffSvg:SvgCachedImage
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Aspect="AspectFit"
+                    Margin="0,30,20,0"
+                    Source="settings.svg"
+                    HeightRequest="24"
+                    WidthRequest="24">
+                    <ffSvg:SvgCachedImage.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnSettingsTapped"
+                            NumberOfTapsRequired="1" />
+                    </ffSvg:SvgCachedImage.GestureRecognizers>
+                </ffSvg:SvgCachedImage>
+
+                <Grid
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3"
+                    Margin="20,20,20,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Row="0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    FontFamily="MuliBlack"
+                                    FontSize="20"
+                                    Text="Hello, "
+                                    TextColor="#2B4D66"/>
+                                <Span
+                                    FontFamily="MuliBlack"
+                                    FontSize="20"
+                                    Text="{Binding User.Name}"
+                                    TextColor="#2B4D66" />
+                                <Span
+                                    FontFamily="MuliBlack"
+                                    FontSize="20"
+                                    Text="!"
+                                    TextColor="#2B4D66" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        Grid.Row="1"
+                        FontFamily="MuliBold"
+                        FontSize="14"
+                        Text="Manage your tasks with our app!"
+                        TextColor="#203A4C"/>
+                </Grid>
+
+                <pv:PancakeView
+                    Grid.Row="2"
+                    Grid.ColumnSpan="3"
+                    HasShadow="True" 
+                    Margin="20,0,20,0"
+                    BackgroundColor="White" 
+                    CornerRadius="5.5" 
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="FillAndExpand">
+                    <pv:PancakeView.Shadow>
+                        <pv:DropShadow Color="#DFF1FB" Offset="5,5" BlurRadius="3" />
+                    </pv:PancakeView.Shadow>
+
+                    <Grid
+                    ColumnSpacing="0"
+                    RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <ffSvg:SvgCachedImage
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            Aspect="AspectFit"
+                            Source="name.svg"
+                            HeightRequest="40"
+                            WidthRequest="40"
+                            Margin="15,0,15,0"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"/>
+
+                        <BoxView
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            BackgroundColor="#D4D4D4"
+                            HeightRequest="50"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="0.5" />
+
+                        <StackLayout
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Vertical"
+                            Padding="0,10,0,10">
+
+                            <Label
+                            FontFamily="MuliRegular"
+                            FontSize="14"
+                            Text="Name"
+                            Margin="25,0,0,0"
+                            TextColor="#4A5E6B"/>
+
+                            <Label
+                            FontFamily="MuliBold"
+                            FontSize="17"
+                            Text="{Binding User.Name}"
+                            Margin="25,-5,0,0"
+                            TextColor="#2B4D66"/>
+                        </StackLayout>
+                    </Grid>
+                </pv:PancakeView>
+
+                <pv:PancakeView
+                    Grid.Row="3"
+                    Grid.ColumnSpan="3"
+                    HasShadow="True" 
+                    Margin="20,0,20,0"
+                    BackgroundColor="White" 
+                    CornerRadius="5.5" 
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="FillAndExpand">
+                    <pv:PancakeView.Shadow>
+                        <pv:DropShadow Color="#7DBBDE" Offset="5,5" BlurRadius="3" />
+                    </pv:PancakeView.Shadow>
+
+                    <Grid
+                    ColumnSpacing="0"
+                    RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <ffSvg:SvgCachedImage
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            Aspect="AspectFit"
+                            Source="surname.svg"
+                            HeightRequest="40"
+                            WidthRequest="40"
+                            Margin="15,0,15,0"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"/>
+
+                        <BoxView
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            BackgroundColor="#D4D4D4"
+                            HeightRequest="50"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="0.5" />
+
+                        <StackLayout
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Vertical"
+                            Padding="0,10,0,10">
+
+                            <Label
+                            FontFamily="MuliRegular"
+                            FontSize="14"
+                            Text="Surame"
+                            Margin="25,0,0,0"
+                            TextColor="#4A5E6B"/>
+
+                            <Label
+                            FontFamily="MuliBold"
+                            FontSize="17"
+                            Text="{Binding User.Surname}"
+                            Margin="25,-5,0,0"
+                            TextColor="#2B4D66"/>
+                        </StackLayout>
+                    </Grid>
+                </pv:PancakeView>
+
+                <pv:PancakeView
+                    Grid.Row="4"
+                    Grid.ColumnSpan="3"
+                    HasShadow="True" 
+                    Margin="20,0,20,0"
+                    BackgroundColor="White" 
+                    CornerRadius="5.5" 
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="FillAndExpand">
+                    <pv:PancakeView.Shadow>
+                        <pv:DropShadow Color="#7DBBDE" Offset="5,5" BlurRadius="3" />
+                    </pv:PancakeView.Shadow>
+
+                    <Grid
+                    ColumnSpacing="0"
+                    RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <ffSvg:SvgCachedImage
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            Aspect="AspectFit"
+                            Source="phone.svg"
+                            HeightRequest="40"
+                            WidthRequest="40"
+                            Margin="15,0,15,0"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"/>
+
+                        <BoxView
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            BackgroundColor="#D4D4D4"
+                            HeightRequest="50"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="0.5" />
+
+                        <StackLayout
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Vertical"
+                            Padding="0,10,0,10">
+
+                            <Label
+                            FontFamily="MuliRegular"
+                            FontSize="14"
+                            Text="Phone number"
+                            Margin="25,0,0,0"
+                            TextColor="#4A5E6B"/>
+
+                            <Label
+                            FontFamily="MuliBold"
+                            FontSize="17"
+                            Text="{Binding User.PhoneNumber}"
+                            Margin="25,-5,0,0"
+                            TextColor="#2B4D66"/>
+                        </StackLayout>
+                    </Grid>
+                </pv:PancakeView>
+
+                <pv:PancakeView
+                    Grid.Row="5"
+                    Grid.ColumnSpan="3"
+                    HasShadow="True" 
+                    Margin="20,0,20,0"
+                    BackgroundColor="White" 
+                    CornerRadius="5.5" 
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="FillAndExpand">
+                    <pv:PancakeView.Shadow>
+                        <pv:DropShadow Color="#7DBBDE" Offset="5,5" BlurRadius="3" />
+                    </pv:PancakeView.Shadow>
+
+                    <Grid
+                    ColumnSpacing="0"
+                    RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <ffSvg:SvgCachedImage
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            Aspect="AspectFit"
+                            Source="email.svg"
+                            HeightRequest="40"
+                            WidthRequest="40"
+                            Margin="15,0,15,0"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"/>
+
+                        <BoxView
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            BackgroundColor="#D4D4D4"
+                            HeightRequest="50"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="0.5" />
+
+                        <StackLayout
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Vertical"
+                            Padding="0,10,0,10">
+
+                            <Label
+                            FontFamily="MuliRegular"
+                            FontSize="14"
+                            Text="Email"
+                            Margin="25,0,0,0"
+                            TextColor="#4A5E6B"/>
+
+                            <Label
+                            FontFamily="MuliBold"
+                            FontSize="17"
+                            Text="{Binding User.Email}"
+                            Margin="25,-5,0,0"
+                            TextColor="#2B4D66"/>
+                        </StackLayout>
+                    </Grid>
+                </pv:PancakeView>
+
+                <pv:PancakeView
+                    Grid.Row="6"
+                    Grid.ColumnSpan="3"
+                    HasShadow="True" 
+                    Margin="20,0,20,0"
+                    BackgroundColor="White" 
+                    CornerRadius="5.5" 
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="FillAndExpand">
+                    <pv:PancakeView.Shadow>
+                        <pv:DropShadow Color="#7DBBDE" Offset="5,5" BlurRadius="3" />
+                    </pv:PancakeView.Shadow>
+
+                    <Grid
+                    ColumnSpacing="0"
+                    RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <ffSvg:SvgCachedImage
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            Aspect="AspectFit"
+                            Source="company.svg"
+                            HeightRequest="40"
+                            WidthRequest="40"
+                            Margin="15,0,15,0"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"/>
+
+                        <BoxView
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            BackgroundColor="#D4D4D4"
+                            HeightRequest="50"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="0.5" />
+
+                        <StackLayout
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Vertical"
+                            Padding="0,10,0,10">
+
+                            <Label
+                            FontFamily="MuliRegular"
+                            FontSize="14"
+                            Text="Company"
+                            Margin="25,0,0,0"
+                            TextColor="#4A5E6B"/>
+
+                            <Label
+                            FontFamily="MuliBold"
+                            FontSize="17"
+                            Text="{Binding User.Company}"
+                            Margin="25,-5,0,0"
+                            TextColor="#2B4D66"/>
+                        </StackLayout>
+                    </Grid>
+                </pv:PancakeView>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+
+
+</ContentPage>

@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:local="clr-namespace:TaskManager.ViewModels"  
+             xmlns:model="clr-namespace:TaskManager.Models"  
+             x:Class="TaskManager.Views.CompanyProfilePage">
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="#F2F9FC">
+            <RefreshView
+                x:DataType="local:CompanyProfileViewModel"
+                Command="{Binding LoadCompanyProfileCommand}" 
+                IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <StackLayout
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Orientation="Vertical">
+
+                    <pv:PancakeView
+                        HasShadow="True" 
+                        Margin="-5,-25,-5,0"
+                        BackgroundColor="#DFF1FB" 
+                        CornerRadius="35" 
+                        HorizontalOptions="FillAndExpand">
+                        <pv:PancakeView.Shadow>
+                            <pv:DropShadow Color="#DFF1FB" Offset="5,5" BlurRadius="3" />
+                        </pv:PancakeView.Shadow>
+
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Vertical">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Margin="20,50,20,0"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal">
+
+                                    <ffSvg:SvgCachedImage
+                                        x:Name="logotype"
+                                        Margin="0,0,10,0"
+                                        Aspect="AspectFit"
+                                        Source="company_logotype.svg"
+                                        HeightRequest="29"
+                                        WidthRequest="29">
+                                        <ffSvg:SvgCachedImage.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Tapped="OnBack"
+                                                NumberOfTapsRequired="1" />
+                                        </ffSvg:SvgCachedImage.GestureRecognizers>
+                                    </ffSvg:SvgCachedImage>
+
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    FontFamily="MuliBlack"
+                                                    FontSize="20"
+                                                    Text="COMPANY" 
+                                                    TextColor="#FF623C"/>
+                                                <Span
+                                                    FontFamily="MuliBlack"
+                                                    FontSize="20"
+                                                    Text=" PROFILE"
+                                                    TextColor="#2B4D66" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+
+                                <ffSvg:SvgCachedImage
+                                    x:Name="settingsIconButton"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Aspect="AspectFit"
+                                    Margin="0,50,10,0"
+                                    Source="settings.svg"
+                                    HeightRequest="24"
+                                    WidthRequest="24">
+                                    <ffSvg:SvgCachedImage.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Tapped="OnSettingsTapped"
+                                            NumberOfTapsRequired="1"/>
+                                    </ffSvg:SvgCachedImage.GestureRecognizers>
+                                </ffSvg:SvgCachedImage>
+
+                                <ffSvg:SvgCachedImage
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    Aspect="AspectFit"
+                                    Margin="0,50,20,0"
+                                    x:Name="addNewEmployee"
+                                    Source="employees.svg"
+                                    HeightRequest="24"
+                                    WidthRequest="24">
+                                    <ffSvg:SvgCachedImage.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Tapped="OnAddNewEmployeeTapped"
+                                            NumberOfTapsRequired="1"/>
+                                    </ffSvg:SvgCachedImage.GestureRecognizers>
+                                </ffSvg:SvgCachedImage>
+                            </Grid>
+
+                            <Label
+                                FontFamily="MuliBlack"
+                                FontSize="20"
+                                Text="{Binding CompanyName}"
+                                Margin="25,10,20,0"
+                                TextColor="#2B4D66"/>
+
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal">
+
+                                <ffSvg:SvgCachedImage
+                                    Aspect="AspectFit"
+                                    Source="email_icon.svg"
+                                    HeightRequest="18"
+                                    WidthRequest="18"
+                                    Margin="25,0,10,0"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"/>
+                                <Label
+                                    FontFamily="MuliRegular"
+                                    FontSize="15"
+                                    Text="{Binding CompanyEmail}"
+                                    TextColor="#2B4D66"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"/>
+                            </StackLayout>
+
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                Margin="0,0,0,23">
+
+                                <ffSvg:SvgCachedImage
+                                    Aspect="AspectFit"
+                                    Source="employee_icon.svg"
+                                    HeightRequest="18"
+                                    WidthRequest="18"
+                                    Margin="25,0,10,0"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"/>
+                                <Label
+                                    x:Name="employeesCount"
+                                    FontFamily="MuliRegular"
+                                    FontSize="15"
+                                    Text="{Binding CountOfEmployees}"
+                                    TextColor="#2B4D66"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"/>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </pv:PancakeView>
+
+                    <Grid 
+                        HorizontalOptions="FillAndExpand"
+                        Margin="20,10,20,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontFamily="MuliBold"
+                            FontSize="25"
+                            Text="News"
+                            TextColor="#2B4D66"
+                            HorizontalOptions="Start"/>
+
+                        <ffSvg:SvgCachedImage
+                            x:Name="addNews"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Aspect="AspectFit"
+                            Source="plus.svg"
+                            HeightRequest="22"
+                            WidthRequest="22"
+                            VerticalOptions="Center"
+                            HorizontalOptions="End">
+                            <ffSvg:SvgCachedImage.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:CompanyProfileViewModel}}, Path=AddNewsTapped}"
+                                    NumberOfTapsRequired="1"/>
+                            </ffSvg:SvgCachedImage.GestureRecognizers>
+                        </ffSvg:SvgCachedImage>
+                    </Grid>
+                    
+                    
+
+                    <CollectionView
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="FillAndExpand"
+                        ItemsSource="{Binding News}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="0"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="10,5,10,5" BackgroundColor="#F2F9FC">
+                                    <pv:PancakeView
+                                    HasShadow="True" 
+                                    BackgroundColor="White" 
+                                    CornerRadius="5.5" 
+                                    VerticalOptions="StartAndExpand" 
+                                    HorizontalOptions="FillAndExpand">
+                                        <pv:PancakeView.Shadow>
+                                            <pv:DropShadow Color="#7DBBDE" Offset="5,5" BlurRadius="3" />
+                                        </pv:PancakeView.Shadow>
+                                        <StackLayout
+                                            Margin="0,10,0,10"
+                                            Orientation="Vertical"
+                                            VerticalOptions="Center">
+                                            <Grid
+                                                Margin="15,0,15,0"
+                                                VerticalOptions="Center">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <ffSvg:SvgCachedImage
+                                                    Margin="0,0,5,0"
+                                                    Grid.Column="0"
+                                                    Source="news_icon.svg"
+                                                    Aspect="AspectFit"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"
+                                                    HeightRequest="18"
+                                                    WidthRequest="18"/>
+                                                <Label
+                                                    x:DataType="model:News"
+                                                    Grid.Column="1"
+                                                    Text="{Binding PublicationInformation}"
+                                                    FontSize="13"
+                                                    FontFamily="MuliRegular"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"
+                                                    TextColor="#4A5E6B"/>
+                                            </Grid>
+                                            <Label
+                                                x:DataType="model:News"
+                                                Text="{Binding NewsText}"
+                                                FontSize="15"
+                                                FontFamily="MuliRegular"
+                                                Margin="15,0,15,0"
+                                                TextColor="#2B4D66"/>
+                                        </StackLayout>
+                                    </pv:PancakeView>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </RefreshView>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

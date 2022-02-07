@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="TaskManager.Views.NewUserPage"
+             Shell.PresentationMode="ModalAnimated">
+    <ContentPage.Content>
+
+        <ScrollView BackgroundColor="#F2F9FC">
+            <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand">
+
+                <ffSvg:SvgCachedImage
+                    Margin="20,25,20,20"
+                    HorizontalOptions="Start"
+                    Aspect="AspectFit"
+                    Source="back.svg"
+                    HeightRequest="17"
+                    WidthRequest="17">
+                    <ffSvg:SvgCachedImage.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnBack"
+                            NumberOfTapsRequired="1" />
+                    </ffSvg:SvgCachedImage.GestureRecognizers>
+                </ffSvg:SvgCachedImage>
+
+                <pv:PancakeView
+                    BackgroundColor="White"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    CornerRadius="20"
+                    Margin="20,0,20,20"
+                    HasShadow="True">
+                    <pv:PancakeView.Shadow>
+                        <pv:DropShadow Color="#C8CBCB" Offset="5,5" BlurRadius="2"/>
+                    </pv:PancakeView.Shadow>
+                    <StackLayout
+                        Orientation="Vertical"
+                        Padding="15"
+                        Margin="0,10,0,0">
+                        <Label VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                    FontFamily="MuliBlack"
+                                    FontSize="20"
+                                    Text="NEW" 
+                                    TextColor="#FF623C"/>
+                                    <Span
+                                    FontFamily="MuliBlack"
+                                    FontSize="20"
+                                    Text=" EMPLOYEE"
+                                    TextColor="#2B4D66" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <pv:PancakeView
+                            BackgroundColor="#E62B4D66"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            CornerRadius="23"
+                            Margin="10,10,10,0"
+                            HasShadow="True">
+
+                            <StackLayout
+                                Orientation="Horizontal">
+
+                                <ffSvg:SvgCachedImage
+                                    Aspect="AspectFit"
+                                    Source="username_login.svg"
+                                    Margin="15,0,2,0"
+                                    HeightRequest="20"
+                                    WidthRequest="20"/>
+
+                                <Entry 
+                                    Placeholder="Username"
+                                    Text="{Binding Username, Mode=TwoWay}"
+                                    FontSize="17"
+                                    FontFamily="RobotoLight"
+                                    HeightRequest="46"
+                                    Margin="0,0,10,0"
+                                    TextColor="White"
+                                    PlaceholderColor="White"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </pv:PancakeView>
+
+                        <pv:PancakeView
+                            BackgroundColor="#E62B4D66"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            CornerRadius="23"
+                            Margin="10,10,10,0"
+                            HasShadow="True">
+
+                            <StackLayout
+                                Orientation="Horizontal">
+
+                                <ffSvg:SvgCachedImage
+                                    Aspect="AspectFit"
+                                    Source="password_login.svg"
+                                    Margin="15,0,2,0"
+                                    HeightRequest="20"
+                                    WidthRequest="20"/>
+
+                                <Entry 
+                                    Placeholder="Password"
+                                    Text="{Binding Password, Mode=TwoWay}"
+                                    FontSize="17"
+                                    FontFamily="RobotoLight"
+                                    HeightRequest="46"
+                                    Margin="0,0,10,0"
+                                    TextColor="White"
+                                    PlaceholderColor="White"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </pv:PancakeView>
+
+                        <pv:PancakeView
+                            BackgroundColor="#E62B4D66"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            CornerRadius="23"
+                            Margin="10,10,10,0"
+                            HasShadow="True">
+
+                            <StackLayout
+                                Orientation="Horizontal">
+
+                                <ffSvg:SvgCachedImage
+                                    Aspect="AspectFit"
+                                    Source="user_info.svg"
+                                    Margin="15,0,2,0"
+                                    HeightRequest="20"
+                                    WidthRequest="20"/>
+
+                                <Entry 
+                                    Placeholder="Name"
+                                    Text="{Binding Name, Mode=TwoWay}"
+                                    FontSize="17"
+                                    FontFamily="RobotoLight"
+                                    HeightRequest="46"
+                                    Margin="0,0,10,0"
+                                    TextColor="White"
+                                    PlaceholderColor="White"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </pv:PancakeView>
+
+                        <pv:PancakeView
+                            BackgroundColor="#E62B4D66"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            CornerRadius="23"
+                            Margin="10,10,10,0"
+                            HasShadow="True">
+
+                            <StackLayout
+                                Orientation="Horizontal">
+
+                                <ffSvg:SvgCachedImage
+                                    Aspect="AspectFit"
+                                    Source="user_info.svg"
+                                    Margin="15,0,2,0"
+                                    HeightRequest="20"
+                                    WidthRequest="20"/>
+
+                                <Entry 
+                                    Placeholder="Surname"
+                                    Text="{Binding Surname, Mode=TwoWay}"
+                                    FontSize="17"
+                                    FontFamily="RobotoLight"
+                                    HeightRequest="46"
+                                    Margin="0,0,10,0"
+                                    TextColor="White"
+                                    PlaceholderColor="White"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </pv:PancakeView>
+
+                        <pv:PancakeView
+                            BackgroundColor="#E62B4D66"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            CornerRadius="23"
+                            Margin="10,10,10,0"
+                            HasShadow="True">
+
+                            <StackLayout
+                                Orientation="Horizontal">
+
+                                <ffSvg:SvgCachedImage
+                                    Aspect="AspectFit"
+                                    Source="phone_number.svg"
+                                    Margin="15,0,2,0"
+                                    HeightRequest="20"
+                                    WidthRequest="20"/>
+
+                                <Entry 
+                                    Placeholder="Phone number"
+                                    Keyboard="Telephone"
+                                    Text="{Binding PhoneNumber, Mode=TwoWay}"
+                                    FontSize="17"
+                                    FontFamily="RobotoLight"
+                                    HeightRequest="46"
+                                    Margin="0,0,10,0"
+                                    TextColor="White"
+                                    PlaceholderColor="White"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </pv:PancakeView>
+
+                        <pv:PancakeView
+                            BackgroundColor="#E62B4D66"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            CornerRadius="23"
+                            Margin="10,10,10,10"
+                            HasShadow="True">
+
+                            <StackLayout
+                                Orientation="Horizontal">
+
+                                <ffSvg:SvgCachedImage
+                                    Aspect="AspectFit"
+                                    Source="email_registration.svg"
+                                    Margin="15,0,2,0"
+                                    HeightRequest="20"
+                                    WidthRequest="20"/>
+
+                                <Entry 
+                                    Placeholder="Email"
+                                    Keyboard="Email"
+                                    Text="{Binding Email, Mode=TwoWay}"
+                                    FontSize="17"
+                                    FontFamily="RobotoLight"
+                                    HeightRequest="46"
+                                    Margin="0,0,10,0"
+                                    TextColor="White"
+                                    PlaceholderColor="White"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </pv:PancakeView>
+
+                        <StackLayout
+                            Orientation="Horizontal"
+                            HorizontalOptions="Center">
+
+                            <Button 
+                                CornerRadius="10" 
+                                Margin="15,0,10,0"
+                                Command="{Binding AddCommand}" 
+                                Text="Login"
+                                FontSize="16"
+                                BackgroundColor="#FF623C"
+                                FontFamily="RobotoRegular"
+                                HorizontalOptions="Center"
+                                TextColor="White"/>
+
+                            <Button 
+                                CornerRadius="10" 
+                                Margin="10,0,15,0"
+                                Command="{Binding CancelCommand}" 
+                                Text="Cancel"
+                                FontSize="16"
+                                BackgroundColor="#FF623C"
+                                FontFamily="MuliRegular"
+                                HorizontalOptions="Center"
+                                WidthRequest="90"
+                                TextColor="White"/>
+                        </StackLayout>
+                    </StackLayout>
+                </pv:PancakeView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

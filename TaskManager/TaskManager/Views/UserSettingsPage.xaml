@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskManager.Views.UserSettingsPage"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:local="clr-namespace:TaskManager.ViewModels" >
+
+    <ContentPage.Content>
+
+        <ScrollView BackgroundColor="White">
+            <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand">
+
+
+                <StackLayout
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Margin="20,30,20,10"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal">
+
+                    <ffSvg:SvgCachedImage
+                    Aspect="AspectFit"
+                    Source="back.svg"
+                    HeightRequest="17"
+                    WidthRequest="17">
+                        <ffSvg:SvgCachedImage.GestureRecognizers>
+                            <TapGestureRecognizer
+                            Tapped="OnBack"
+                            NumberOfTapsRequired="1" />
+                        </ffSvg:SvgCachedImage.GestureRecognizers>
+                    </ffSvg:SvgCachedImage>
+
+                    <Label VerticalOptions="Center"
+                        Margin="15,0,0,0"
+                        FontFamily="MuliBlack"
+                        FontSize="20"
+                        Text="SETTINGS"
+                        TextColor="#2B4D66"/>
+                </StackLayout>
+
+                <Grid 
+                    Margin="17,5,17,0"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="8,10,0,5"
+                        TextColor="#1C374A"
+                        VerticalOptions="Center"
+                        Text="Name"
+                        FontFamily="MuliBold"
+                        FontSize="20"/>
+
+                    <ffSvg:SvgCachedImage
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Aspect="AspectFit"
+                        Source="task_name.svg"
+                        Margin="10,10,9,5"
+                        HeightRequest="24"
+                        WidthRequest="24"/>
+
+                    <pv:PancakeView 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="#AAd7e7f2"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        CornerRadius="6"
+                        Margin="10,0,10,10"
+                        Padding="-5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontFamily="MuliRegular"
+                                HeightRequest="40"
+                                Margin="15,10,10,0"
+                                Text="{Binding User.Name}"
+                                VerticalOptions="Center"
+                                TextColor="#1C374A"
+                                FontSize="17"/>
+                            <ffSvg:SvgCachedImage
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                HorizontalOptions="End"
+                                Aspect="AspectFit"
+                                Source="edit_settings.svg"
+                                Margin="10,0,15,0"
+                                HeightRequest="20"
+                                WidthRequest="20"/>
+                        </Grid>
+                        <pv:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:UserSettingsViewModel}}, Path=ChangeNameTapped}"		
+                                NumberOfTapsRequired="1"/>
+                        </pv:PancakeView.GestureRecognizers>
+                    </pv:PancakeView>
+                </Grid>
+
+                <Grid 
+                    Margin="17,0,17,0"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="8,10,0,5"
+                        TextColor="#1C374A"
+                        VerticalOptions="Center"
+                        Text="Surname"
+                        FontFamily="MuliBold"
+                        FontSize="20"/>
+
+                    <ffSvg:SvgCachedImage
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Aspect="AspectFit"
+                        Source="description.svg"
+                        Margin="10,10,9,5"
+                        HeightRequest="22"
+                        WidthRequest="22"/>
+
+                    <pv:PancakeView 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="#AAd7e7f2"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        CornerRadius="6"
+                        Margin="10,0,10,10"
+                        Padding="-5">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                HorizontalOptions="Start"
+                                FontFamily="MuliRegular"
+                                HeightRequest="40"
+                                Margin="15,10,10,0"
+                                Text="{Binding User.Surname}"
+                                VerticalOptions="Center"
+                                TextColor="#1C374A"
+                                FontSize="17"/>
+                            <ffSvg:SvgCachedImage
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                HorizontalOptions="End"
+                                Aspect="AspectFit"
+                                Source="edit_settings.svg"
+                                Margin="10,0,15,0"
+                                HeightRequest="20"
+                                WidthRequest="20"/>
+                        </Grid>
+                        <pv:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:UserSettingsViewModel}}, Path=ChangeSurnameTapped}"		
+                                NumberOfTapsRequired="1"/>
+                        </pv:PancakeView.GestureRecognizers>
+                    </pv:PancakeView>
+                </Grid>
+
+                <Grid 
+                    Margin="17,0,17,0"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="8,10,0,5"
+                        TextColor="#1C374A"
+                        VerticalOptions="Center"
+                        Text="Password"
+                        FontFamily="MuliBold"
+                        FontSize="20"/>
+
+                    <ffSvg:SvgCachedImage
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Aspect="AspectFit"
+                        Source="description.svg"
+                        Margin="10,10,9,5"
+                        HeightRequest="22"
+                        WidthRequest="22"/>
+
+                    <pv:PancakeView 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="#AAd7e7f2"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        CornerRadius="6"
+                        Margin="10,0,10,10"
+                        Padding="-5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                HorizontalOptions="Start"
+                                FontFamily="MuliRegular"
+                                HeightRequest="40"
+                                Margin="15,10,10,0"
+                                Text="{Binding User.Password}"
+                                VerticalOptions="Center"
+                                TextColor="#1C374A"
+                                FontSize="17"/>
+                            <ffSvg:SvgCachedImage
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                HorizontalOptions="End"
+                                Aspect="AspectFit"
+                                Source="edit_settings.svg"
+                                Margin="10,0,15,0"
+                                HeightRequest="20"
+                                WidthRequest="20"/>
+                        </Grid>
+                        <pv:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:UserSettingsViewModel}}, Path=ChangePasswordTapped}"		
+                                NumberOfTapsRequired="1"/>
+                        </pv:PancakeView.GestureRecognizers>
+                    </pv:PancakeView>
+                </Grid>
+
+
+                <BoxView 
+                    Margin="0,10,0,5"
+                    HeightRequest="0.5"
+                    HorizontalOptions="FillAndExpand"
+                    Color="LightGray"/>
+
+                <StackLayout Orientation="Horizontal">
+
+                    <ffSvg:SvgCachedImage
+                        Aspect="AspectFit"
+                        Source="logout.svg"
+                        VerticalOptions="Center"
+                        Margin="17,0,7,0"
+                        HeightRequest="23"
+                        WidthRequest="23"/>
+                    
+                    <Label 
+                        Text="Logout"
+                        FontFamily="MuliBold"
+                        HorizontalOptions="FillAndExpand"
+                        TextColor="#F44336"
+                        FontSize="20"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:UserSettingsViewModel}}, Path=LogoutTapped}"		
+                            NumberOfTapsRequired="1"/>
+                    </StackLayout.GestureRecognizers>
+                    
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

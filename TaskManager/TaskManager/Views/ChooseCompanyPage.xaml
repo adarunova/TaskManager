@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             Shell.PresentationMode="ModalAnimated"
+             x:Class="TaskManager.Views.ChooseCompanyPage">
+
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="#F2F9FC"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            Orientation="Vertical">
+
+            <StackLayout
+                Margin="20,25,20,10"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal">
+
+                <ffSvg:SvgCachedImage
+                        Aspect="AspectFit"
+                        Source="back.svg"
+                        HeightRequest="17"
+                        WidthRequest="17">
+                    <ffSvg:SvgCachedImage.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnBack"
+                            NumberOfTapsRequired="1" />
+                    </ffSvg:SvgCachedImage.GestureRecognizers>
+                </ffSvg:SvgCachedImage>
+
+                <Label VerticalOptions="Center"
+                           Margin="15,0,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontFamily="MuliBlack"
+                                FontSize="20"
+                                Text="CHOOSE" 
+                                TextColor="#FF623C"/>
+                            <Span
+                                FontFamily="MuliBlack"
+                                FontSize="20"
+                                Text=" COMPANY"
+                                TextColor="#2B4D66" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
+            <pv:PancakeView
+                Margin="15,0,15,5"
+                BackgroundColor="#E62B4D66" 
+                CornerRadius="35" 
+                Padding="-2"
+                HorizontalOptions="FillAndExpand">
+
+                <SearchBar 
+                    x:Name="SearchCompanyBar"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Placeholder="Search your company..."
+                    CancelButtonColor="#F2F9FC"
+                    PlaceholderColor="#F2F9FC"
+                    TextColor="#F2F9FC"
+                    FontSize="16"
+                    FontFamily="RobotoLight"
+                    HorizontalTextAlignment="Start"
+                    TextChanged="OnTextChanged"/>
+            </pv:PancakeView>
+
+            <CollectionView
+                x:Name="SearchResultsCollection"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
+                ItemsSource="{Binding Companies}"
+                SelectionChanged="OnSelectionChanged"
+                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10,2,10,3">
+                            <pv:PancakeView
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                HasShadow="True"
+                                CornerRadius="6">
+                                <pv:PancakeView.Shadow>
+                                    <pv:DropShadow Color="#666666" Offset="5,5" BlurRadius="1"/>
+                                </pv:PancakeView.Shadow>
+                                <StackLayout
+                                    Orientation="Horizontal">
+                                    <BoxView
+                                        WidthRequest="4"
+                                        VerticalOptions="FillAndExpand"
+                                        BackgroundColor="#FF623C"/>
+                                    <Label
+                                        Margin="15"
+                                        Text="{Binding CompanyName}"
+                                        TextColor="#19374D"
+                                        FontSize="19"
+                                        FontFamily="MuliBold"/>
+                                </StackLayout>
+                            </pv:PancakeView>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal" />
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="#E698D7F9"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
